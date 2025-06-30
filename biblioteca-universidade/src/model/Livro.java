@@ -15,7 +15,6 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    // Getters e Setters
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
 

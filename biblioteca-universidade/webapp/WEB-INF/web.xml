@@ -1,11 +1,15 @@
-<web-app xmlns="http://jakarta.ee/xml/ns/jakartaee"
-         version="5.0">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
     <servlet>
-        <servlet-name>LivroServlet</servlet-name>
-        <servlet-class>controller.LivroServlet</servlet-class>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>LivroServlet</servlet-name>
-        <url-pattern>/LivroServlet</url-pattern>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
 </web-app>

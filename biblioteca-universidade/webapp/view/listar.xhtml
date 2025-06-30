@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+  <h:head>
+    <title>Lista de Livros</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        padding: 30px;
+        color: #333;
+      }
+      h2 {
+        color: #6a0dad;
+        margin-bottom: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #6a0dad;
+        color: white;
+        font-weight: 600;
+      }
+      tr:hover {
+        background-color: #f1eaff;
+      }
+      a {
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      p a {
+        display: inline-block;
+        background-color: #6a0dad;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        margin-top: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      p a:hover {
+        background-color: #4b0082;
+      }
+    </style>
+  </h:head>
+  <h:body>
+    <h2>Livros Cadastrados</h2>
+    <h:dataTable value="#{livroBean.livros}" var="livro" border="1">
+      <h:column>
+        <f:facet name="header">Título</f:facet>
+        #{livro.titulo}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Autor</f:facet>
+        #{livro.autor}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Ano</f:facet>
+        #{livro.ano}
+      </h:column>
+      <h:column>
+        <f:facet name="header">ISBN</f:facet>
+        #{livro.isbn}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Ação</f:facet>
+        <h:link outcome="excluir" value="Excluir">
+          <f:param name="isbn" value="#{livro.isbn}" />
+        </h:link>
+      </h:column>
+    </h:dataTable>
+    <br />
+    <h:link outcome="cadastro" value="Cadastrar novo" />
+  </h:body>
+</html>

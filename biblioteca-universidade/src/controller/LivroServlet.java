@@ -1,22 +1,41 @@
 package controller;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
 import model.Livro;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.WebServlet;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 @WebServlet("/LivroServlet")
 public class LivroServlet extends HttpServlet {
-
-    private static final List<Livro> livros = new ArrayList<>();
+    public static List<Livro> livros = new ArrayList<>();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+        // aqui vai seu código do doPost, tudo dentro da classe!
+        String acao = request.getParameter("acao");
+        if ("excluir".equals(acao)) {
+            String isbn = request.getParameter("isbn");
+            if (isbn != null) {
+                Iterator<Livro> it = livros.iterator();
+                while (it.hasNext()) {
+                    Livro l = it.next();
+                    if (l.getIsbn().equals(isbn)) {
+                        it.remove();
+                        break;
+                    }
+                }
+            }
+            response.sendRedirect("view/listar.xhtml");
+            return;
+        }
 
+        // restante do código do cadastro
         String titulo = request.getParameter("titulo");
         String autor = request.getParameter("autor");
         String anoStr = request.getParameter("ano");
@@ -30,29 +49,11 @@ public class LivroServlet extends HttpServlet {
 
         try {
             int ano = Integer.parseInt(anoStr);
-            Livro livro = new Livro(titulo, autor, ano, isbn);
-            livros.add(livro);
-            response.sendRedirect("view/listar.jsp");
+            livros.add(new Livro(titulo, autor, ano, isbn));
+            response.sendRedirect("view/listar.xhtml");
         } catch (NumberFormatException e) {
             request.setAttribute("erro", "Ano inválido.");
             request.getRequestDispatcher("view/cadastro.jsp").forward(request, response);
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String acao = request.getParameter("acao");
-
-        if ("excluir".equals(acao)) {
-            String isbn = request.getParameter("isbn");
-            livros.removeIf(livro -> livro.getIsbn().equals(isbn));
-            response.sendRedirect("view/listar.jsp");
-        }
-    }
-
-    public static List<Livro> getLivros() {
-        return livros;
     }
 }
