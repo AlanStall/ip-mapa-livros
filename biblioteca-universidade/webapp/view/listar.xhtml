@@ -2,9 +2,11 @@
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
   <h:head>
     <title>Lista de Livros</title>
+    <meta charset="UTF-8" />
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -62,6 +64,20 @@
       p a:hover {
         background-color: #4b0082;
       }
+      .botao-link {
+        display: inline-block;
+        background-color: #6a0dad;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+      }
+
+      .botao-link:hover {
+        background-color: #4b0082;
+      }
     </style>
   </h:head>
   <h:body>
@@ -85,12 +101,10 @@
       </h:column>
       <h:column>
         <f:facet name="header">Ação</f:facet>
-        <h:link outcome="excluir" value="Excluir">
-          <f:param name="isbn" value="#{livro.isbn}" />
-        </h:link>
+        <a href="excluir.jsp?isbn=#{livro.isbn}">Excluir</a>
       </h:column>
     </h:dataTable>
     <br />
-    <h:link outcome="cadastro" value="Cadastrar novo" />
+    <a href="cadastro.jsp" class="botao-link">Cadastrar novo</a>
   </h:body>
 </html>

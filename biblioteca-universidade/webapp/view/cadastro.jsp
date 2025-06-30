@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
   <head>
     <title>Cadastro de Livro</title>
@@ -98,6 +98,6 @@
     <p class="erro">Erro: <%= request.getAttribute("erro") %></p>
     <% } %>
 
-    <p><a href="listar.jsp">Ver lista</a></p>
+    <p><a href="listar.xhtml">Ver lista</a></p>
   </body>
 </html>
