@@ -8,6 +8,7 @@ break; } } %>
   <head>
     <meta charset="UTF-8" />
     <title>Excluir Livro</title>
+    <!-- classes CSS para apresentação da página -->
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -15,7 +16,6 @@ break; } } %>
         padding: 40px;
         color: #333;
       }
-
       .container {
         background-color: #fff;
         padding: 30px;
@@ -24,20 +24,16 @@ break; } } %>
         margin: auto;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       }
-
       h2 {
         color: #6a0dad;
       }
-
       p {
         margin: 10px 0;
         font-size: 16px;
       }
-
       .buttons {
         margin-top: 20px;
       }
-
       .buttons input[type="submit"],
       .buttons a {
         padding: 10px 20px;
@@ -48,23 +44,22 @@ break; } } %>
         margin-right: 10px;
         cursor: pointer;
       }
-
       .buttons input[type="submit"] {
         background-color: #6a0dad;
         color: white;
       }
-
       .buttons a {
         background-color: #bdc3c7;
         color: #2c3e50;
       }
-
       .buttons a:hover {
         background-color: #95a5a6;
       }
-
       .buttons input[type="submit"]:hover {
         background-color: #6a0dad;
+      }
+      .text-bold {
+        font-weight: 700;
       }
     </style>
   </head>
@@ -72,12 +67,14 @@ break; } } %>
     <div class="container">
       <h2>Confirmar exclusão do livro</h2>
 
+      <!-- apresentação das informações do livro a ser excluído antes da exclusão para confirmação -->
       <% if (livroParaExcluir != null) { %>
-      <p><strong>Título:</strong> <%= livroParaExcluir.getTitulo() %></p>
-      <p><strong>Autor:</strong> <%= livroParaExcluir.getAutor() %></p>
-      <p><strong>Ano:</strong> <%= livroParaExcluir.getAno() %></p>
-      <p><strong>ISBN:</strong> <%= livroParaExcluir.getIsbn() %></p>
+      <p class="text-bold">Título: <%= livroParaExcluir.getTitulo() %></p>
+      <p class="text-bold">Autor: <%= livroParaExcluir.getAutor() %></p>
+      <p class="text-bold">Ano: <%= livroParaExcluir.getAno() %></p>
+      <p class="text-bold">ISBN: <%= livroParaExcluir.getIsbn() %></p>
 
+      <!-- form para pegar o ISBN do livro para confirmar exclusão -->
       <form action="../LivroServlet" method="post" class="buttons">
         <input type="hidden" name="acao" value="excluir" />
         <input type="hidden" name="isbn" value="<%= isbn %>" />
@@ -86,6 +83,8 @@ break; } } %>
       </form>
       <% } else { %>
       <p>Livro não encontrado!</p>
+
+      <!-- direcionamento para tela de livros cadastrados -->
       <div class="buttons">
         <a href="listar.xhtml">Voltar para a lista</a>
       </div>

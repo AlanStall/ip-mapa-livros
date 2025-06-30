@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>Cadastro de Livro</title>
+    <!-- classes CSS para apresentação da página -->
     <style>
       body {
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
@@ -73,6 +75,7 @@
   <body>
     <h2>Cadastro de Livro</h2>
 
+    <!-- campos do formulário para cadastrar livro -->
     <form action="../LivroServlet" method="post">
       <div class="cadastro-info">
         <label>Título:</label>
@@ -98,6 +101,7 @@
     <p class="erro">Erro: <%= request.getAttribute("erro") %></p>
     <% } %>
 
+    <!-- direcionamento para a página de livros cadastrados -->
     <p><a href="listar.xhtml">Ver lista</a></p>
   </body>
 </html>

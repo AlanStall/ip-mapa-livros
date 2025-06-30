@@ -5,8 +5,9 @@
   xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
   <h:head>
-    <title>Lista de Livros</title>
     <meta charset="UTF-8" />
+    <title>Lista de Livros</title>
+    <!-- classes CSS para apresentação da página -->
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -82,6 +83,8 @@
   </h:head>
   <h:body>
     <h2>Livros Cadastrados</h2>
+
+    <!-- Arquivo JSF (.xhtml) do front-end para listar livros cadastrados -->
     <h:dataTable value="#{livroBean.livros}" var="livro" border="1">
       <h:column>
         <f:facet name="header">Título</f:facet>
@@ -105,6 +108,7 @@
       </h:column>
     </h:dataTable>
     <br />
+    <!-- direcionamento para a tela de cadastro de novo livro -->
     <a href="cadastro.jsp" class="botao-link">Cadastrar novo</a>
   </h:body>
 </html>

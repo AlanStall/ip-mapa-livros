@@ -6,6 +6,7 @@ import model.Livro;
 import java.io.Serializable;
 import java.util.List;
 
+// classe para listar livros cadastrados pelo JSF (.xhtml)
 @ManagedBean(name = "livroBean")
 @SessionScoped
 public class LivroBean implements Serializable {
